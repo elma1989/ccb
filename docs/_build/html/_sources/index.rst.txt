@@ -6,3 +6,4 @@
    :caption: Inhalt:
    :hidden:
 
+   database_model
