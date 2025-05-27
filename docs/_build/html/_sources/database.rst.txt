@@ -7,6 +7,8 @@ UML-Klassendiagramm
 .. image:: img/database.dio.svg
     :scale: 120%
 
+.. autofunction:: database.indb()
+
 Modul: data
 ============
 

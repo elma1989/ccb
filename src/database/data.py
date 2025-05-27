@@ -1,5 +1,6 @@
 from sqlite3 import Connection, Cursor, connect
 from database import DBPATH, Error
+from abc import ABC, abstractmethod
 
 class Data:
     """
