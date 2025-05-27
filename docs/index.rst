@@ -7,3 +7,4 @@
    :hidden:
 
    database_model
+   database
