@@ -38,3 +38,23 @@ class Country(DataObject):
     def __eq__(self, other) -> bool:
         if not isinstance(other, Country): return False
         return self.cs == other.cs
+    
+    def exists(self) -> bool:
+        """
+        Prüft, ob ein Land vorhanden ist.
+
+        :return: **True**, wenn das Land verhanden ist
+        """
+        sql:str = 'SELECT cty_cs FROM country WHERE cty_cs = ?'
+        found:bool = False
+
+        try:
+            self.connect()
+            if self.con and self.c:
+                self.c.execute(sql,(self.cs,))
+                res = self.c.fetchone()
+                if res: found = True
+        except Error as e: print(e)
+        finally: self.close()
+
+        return found
