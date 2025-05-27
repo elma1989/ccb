@@ -48,6 +48,16 @@
 <li class="toctree-l1"><a class="reference internal" href="database_model.html">Datenbankmodell</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Paket: database</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#uml-klassendiagramm">UML-Klassendiagramm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modul-data">Modul: data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#database.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.Data.c"><code class="docutils literal notranslate"><span class="pre">Data.c</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Data.close"><code class="docutils literal notranslate"><span class="pre">Data.close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Data.con"><code class="docutils literal notranslate"><span class="pre">Data.con</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Data.connect"><code class="docutils literal notranslate"><span class="pre">Data.connect()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -82,6 +92,57 @@
 <h2>UML-Klassendiagramm<a class="headerlink" href="#uml-klassendiagramm" title="Link to this heading"></a></h2>
 <a class="reference internal image-reference" href="_images/database.dio.svg"><img alt="_images/database.dio.svg" src="_images/database.dio.svg" style="width: 1117.2px; height: 1140.0px;" />
 </a>
+</section>
+<section id="modul-data">
+<h2>Modul: data<a class="headerlink" href="#modul-data" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.Data">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.</span></span><span class="sig-name descname"><span class="pre">Data</span></span><a class="headerlink" href="#database.Data" title="Link to this definition"></a></dt>
+<dd><p>Stellt die Datenbank zur Verfügung.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="database.Data.c">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">c</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Cursor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#database.Data.c" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Getter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Datenbankzeiger</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.Data.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Data.close" title="Link to this definition"></a></dt>
+<dd><p>Trennt die Datenbankverbindung wieder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="database.Data.con">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">con</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Connection</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#database.Data.con" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Getter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Datenbankverbindung</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.Data.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Data.connect" title="Link to this definition"></a></dt>
+<dd><p>Stellt eine Verbindung zur Datenbank her.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
