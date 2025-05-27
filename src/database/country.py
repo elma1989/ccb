@@ -8,6 +8,7 @@ class Country(DataObject):
     :param name: Name des Landes (Standard: "")
     """
     def __init__(self, cs:str, name:str = "") -> None:
+        super().__init__()
         self.__cs = cs.upper()
         self.__name = name
 
@@ -58,3 +59,34 @@ class Country(DataObject):
         finally: self.close()
 
         return found
+
+    def add(self) -> int:
+        """
+        Fügt ein neues Land in die Datenbank ein.
+
+        :return:
+             | 0 - Erfolgreich
+             | 1 - Landdaten ungültig
+             | 3 - Land bereits vorhanden
+        """
+        sql:str = 'INSERT INTO country VALUES(?,?)'
+        success:bool = False
+
+        if len(self.cs) < 1 or len(self.cs) > 3 or len(self.name) == 0: return 1
+
+        try:
+            self.connect()
+            if self.con and self.c:
+                self.c.execute(sql,(self.cs, self.name))
+                self.con.commit()
+                success = True
+        except Error as e: print(e)
+        finally: self.close()
+
+        return 0 if success else 3
+    
+    def remove(self) -> int:
+        return 1
+    
+    def to_dict(self) -> dict:
+        return {}

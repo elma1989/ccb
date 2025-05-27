@@ -4,6 +4,7 @@ TABLEPATH = 'database/tables.sql'
 import os
 from sqlite3 import Error
 from .data import Data, DataObject
+from .country import Country
 
 def indb():
     """

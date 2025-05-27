@@ -17,3 +17,9 @@ Modul: data
 
 .. autoclass:: database.DataObject
     :members:
+
+Modul: country
+==============
+
+.. autoclass:: database.Country
+    :members:

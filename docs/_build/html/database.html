@@ -68,6 +68,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#modul-country">Modul: country</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#database.Country"><code class="docutils literal notranslate"><span class="pre">Country</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.Country.add"><code class="docutils literal notranslate"><span class="pre">Country.add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Country.cs"><code class="docutils literal notranslate"><span class="pre">Country.cs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Country.exists"><code class="docutils literal notranslate"><span class="pre">Country.exists()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Country.name"><code class="docutils literal notranslate"><span class="pre">Country.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Country.remove"><code class="docutils literal notranslate"><span class="pre">Country.remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Country.to_dict"><code class="docutils literal notranslate"><span class="pre">Country.to_dict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -223,6 +235,109 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="database.DataObject.to_dict">
 <em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.DataObject.to_dict" title="Link to this definition"></a></dt>
+<dd><p>Liefert die wichtigsten Daten eines Objektes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p>Wörterbuch des jeweiligen Objektes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="modul-country">
+<h2>Modul: country<a class="headerlink" href="#modul-country" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.Country">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.</span></span><span class="sig-name descname"><span class="pre">Country</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.Country" title="Link to this definition"></a></dt>
+<dd><p>Repräsentiert ein Land.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cs</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Kfz-Kennzeichen</p></li>
+<li><p><strong>name</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Name des Landes (Standard: „“)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.Country.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Country.add" title="Link to this definition"></a></dt>
+<dd><p>Fügt ein neues Land in die Datenbank ein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p><div class="line-block">
+<div class="line">0 - Erfolgreich</div>
+<div class="line">1 - Landdaten ungültig</div>
+<div class="line">3 - Land bereits vorhanden</div>
+</div>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="database.Country.cs">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#database.Country.cs" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Getter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Kfz-Kennzeichen</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.Country.exists">
+<span class="sig-name descname"><span class="pre">exists</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Country.exists" title="Link to this definition"></a></dt>
+<dd><p>Prüft, ob ein Land vorhanden ist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>True</strong>, wenn das Land verhanden ist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="database.Country.name">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#database.Country.name" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Getter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Landname</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.Country.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Country.remove" title="Link to this definition"></a></dt>
+<dd><p>Löscht ein Objekt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p><div class="line-block">
+<div class="line">0 - Erfolgreich</div>
+<div class="line">1 - Objekt nicht gefunden</div>
+<div class="line">2 - Noch referenzen vorhanden</div>
+</div>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.Country.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Country.to_dict" title="Link to this definition"></a></dt>
 <dd><p>Liefert die wichtigsten Daten eines Objektes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
