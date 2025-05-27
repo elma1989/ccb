@@ -88,5 +88,12 @@ class Country(DataObject):
     def remove(self) -> int:
         return 1
     
-    def to_dict(self) -> dict:
-        return {}
+    def to_dict(self) -> dict[str,str]:
+        """
+        Liefert die Daten des Landes.
+
+        :return: Kfz-Kennzeichen, ggf. Name des Landes
+        """
+        outdict = {'cs':self.cs}
+        if len(self.name) > 0: outdict['name'] = self.name
+        return outdict

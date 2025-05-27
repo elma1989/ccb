@@ -1,5 +1,6 @@
 DBPATH = '../ccb.db'
 TABLEPATH = 'database/tables.sql'
+FKON = 'PRAGMA foreign_keys = ON'
 
 import os
 from sqlite3 import Error
