@@ -14,3 +14,6 @@ Modul: data
 
 .. autoclass:: database.Data
     :members:
+
+.. autoclass:: database.DataObject
+    :members:

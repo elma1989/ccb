@@ -3,7 +3,7 @@ TABLEPATH = 'database/tables.sql'
 
 import os
 from sqlite3 import Error
-from .data import Data
+from .data import Data, DataObject
 
 def indb():
     """

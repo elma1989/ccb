@@ -35,3 +35,53 @@ class Data:
             self.con.close()
             self.__c = None
             self.__con = None
+
+class DataObject(Data, ABC):
+    """
+    Repräsentiert eine Datenbank-Entität.
+    """
+    def __init__(self):
+        Data.__init__(self)
+
+    @abstractmethod
+    def exists(self) -> bool:
+        """
+        Prüft, ob ein Objekt existiert.
+
+        :return: **True**, wenn es vorhanden ist
+        """
+        pass
+
+    @abstractmethod
+    def add(self) -> int:
+        """
+        Fügt ein Objekt in die Datenbank ein.
+
+        :return:
+             | 0 - Erfolgreich
+             | 1 - Objekt ungültig
+             | 2 - Referenzen in Objekt nicht gefunden
+             | 3 - Objekt bereits vorhanden
+        """
+        pass
+
+    @abstractmethod
+    def remove(self) -> int:
+        """
+        Löscht ein Objekt.
+
+        :return:
+             | 0 - Erfolgreich
+             | 1 - Objekt nicht gefunden
+             | 2 - Noch referenzen vorhanden
+        """
+        pass
+
+    @abstractmethod
+    def to_dict(self) -> dict:
+        """
+        Liefert die wichtigsten Daten eines Objektes.
+
+        :return: Wörterbuch des jeweiligen Objektes.
+        """
+        pass

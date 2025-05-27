@@ -59,6 +59,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#database.Data.connect"><code class="docutils literal notranslate"><span class="pre">Data.connect()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#database.DataObject"><code class="docutils literal notranslate"><span class="pre">DataObject</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.DataObject.add"><code class="docutils literal notranslate"><span class="pre">DataObject.add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.DataObject.exists"><code class="docutils literal notranslate"><span class="pre">DataObject.exists()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.DataObject.remove"><code class="docutils literal notranslate"><span class="pre">DataObject.remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.DataObject.to_dict"><code class="docutils literal notranslate"><span class="pre">DataObject.to_dict()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -150,6 +157,79 @@
 <dl class="field-list simple">
 <dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="database.DataObject">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.</span></span><span class="sig-name descname"><span class="pre">DataObject</span></span><a class="headerlink" href="#database.DataObject" title="Link to this definition"></a></dt>
+<dd><p>Repräsentiert eine Datenbank-Entität.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.DataObject.add">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.DataObject.add" title="Link to this definition"></a></dt>
+<dd><p>Fügt ein Objekt in die Datenbank ein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p><div class="line-block">
+<div class="line">0 - Erfolgreich</div>
+<div class="line">1 - Objekt ungültig</div>
+<div class="line">2 - Referenzen in Objekt nicht gefunden</div>
+<div class="line">3 - Objekt bereits vorhanden</div>
+</div>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.DataObject.exists">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exists</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.DataObject.exists" title="Link to this definition"></a></dt>
+<dd><p>Prüft, ob ein Objekt existiert.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>True</strong>, wenn es vorhanden ist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.DataObject.remove">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.DataObject.remove" title="Link to this definition"></a></dt>
+<dd><p>Löscht ein Objekt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p><div class="line-block">
+<div class="line">0 - Erfolgreich</div>
+<div class="line">1 - Objekt nicht gefunden</div>
+<div class="line">2 - Noch referenzen vorhanden</div>
+</div>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.DataObject.to_dict">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.DataObject.to_dict" title="Link to this definition"></a></dt>
+<dd><p>Liefert die wichtigsten Daten eines Objektes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p>Wörterbuch des jeweiligen Objektes.</p>
 </dd>
 </dl>
 </dd></dl>
