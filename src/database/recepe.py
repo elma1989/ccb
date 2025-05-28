@@ -42,7 +42,7 @@ class Recepe(DataObject):
             try:
                 self.connect()
                 if self.con and self.c:
-                    self.c.execute(sql,(self.name))
+                    self.c.execute(sql,(self.name, self.country.cs))
                     res = self.c.fetchone()
                     if res: self.__id = res[0]
             except Error as e: print(e)
@@ -157,4 +157,11 @@ class Recepe(DataObject):
         return 1
 
     def to_dict(self) -> dict[str,str|int]:
-        return {}
+        """
+        Liefert die Grunddaten eines Receptes.
+
+        :return: ID des Rezeptes, Name des Rezeptes
+        """
+        outdict:dict[str,str|int] = {'name':self.name}
+        if self.id != 0: outdict['id'] = self.id
+        return outdict
