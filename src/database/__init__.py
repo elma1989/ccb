@@ -6,6 +6,7 @@ import os
 from sqlite3 import Error
 from .data import Data, DataObject
 from .country import Country
+from .ingrediant import Ingrediant
 
 def indb():
     """
