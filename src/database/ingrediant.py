@@ -28,8 +28,8 @@ class Ingrediant(DataObject):
         """
         :getter: Menge
         :return:
-            amount[0] - Anzahl der Einheiten
-            amount[1] - Einheit        
+             | amount[0] - Anzahl der Einheiten
+             | amount[1] - Einheit        
         """
         return (self.__amount, self.__unit)
     
@@ -108,4 +108,14 @@ class Ingrediant(DataObject):
         return 1
     
     def to_dict(self) -> dict[str,Any]:
-        return {}
+        """
+        Liefert die Daten einer Zutat:
+
+        :return: Name, Menge, Einheit, ID
+        """
+        outdict = {'name': self.name}
+        if self.amount[0] != 0.0:
+            outdict['amount'] = self.amount[0]
+            outdict['unit'] = self.amount[1]
+        if self.id != 0: outdict['id'] = self.id
+        return outdict

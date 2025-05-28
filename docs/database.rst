@@ -23,3 +23,9 @@ Modul: country
 
 .. autoclass:: database.Country
     :members:
+
+Modul: ingrediant
+=================
+
+.. autoclass:: database.Ingrediant
+    :members:
