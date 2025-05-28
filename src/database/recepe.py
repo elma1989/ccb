@@ -1,0 +1,99 @@
+from database import DataObject, Error, Country, Ingrediant
+
+class Recepe(DataObject):
+    """
+    Repräsentiert ein Rezept.
+
+    :param name: Name des Rezeptes
+    :param country: Land, aus dem das Rezept stammt
+    :param id: ID in der Datenbank (Standard: 0)
+    :param preparation: Zubereitungsanleitung (Standard: "")
+    :ivar ingrediants: Zutatenliste
+    """
+    def __init__(self, name:str, country:Country, int:id=0, preparation:str=''):
+        self.__name = name
+        self.__country: Country|None = country if isinstance(country, Country) and country.exists() else None
+        self.__id = id
+        self.__preparation = preparation
+        self.__ingrediants:list[Ingrediant] = []
+
+    @property
+    def name(self) -> str:
+        ''':getter: Name des Rezeptes'''
+        return self.__name
+    
+    @property
+    def country(self) -> Country|None:
+        """
+        :getter: Urprungsland des Rezeptes
+        :return: Instanz des Landes, **None**, wenn das Land nicht vorhanden ist.
+        """
+        return self.__country
+    
+    @property
+    def id(self) -> int:
+        ''':getter: ID des Rezeptes'''
+        sql:str = 'SELECT rcp_id FROM recepe WHERE rcp_name = ? AND cty_cs = ?'
+
+        if self.__id == 0 and self.country:
+            try:
+                self.connect()
+                if self.con and self.c:
+                    self.c.execute(sql,(self.name))
+                    res = self.c.fetchone()
+                    if res: self.__id = res[0]
+            except Error as e: print(e)
+            finally: self.close()
+        
+        return self.__id
+    
+    @property
+    def preparation(self) -> str:
+        """
+        Verwaltet die Zubereitung.
+
+        :getter: Liefert die Zubereitungsanleitung.
+        :setter: Speichert die Zubereittungsanleitung ab.
+        """
+        return self.__preparation
+    
+    @preparation.setter
+    def preparation(self, manuel:str) -> None:
+        sql:str = 'UPDATE recepe SET rcp_preparation = ? WHERE rcp_id = ?'
+        
+        if self.id != 0:
+            try:
+                self.connect()
+                if self.con and self.c:
+                    self.c.execute(sql,(manuel, self.id))
+                    self.con.commit()
+                    self.__preparation = manuel
+            except Error as e: print(e)
+            finally: self.close()
+
+    @property
+    def ingrediants(self) -> list[Ingrediant]:
+        ''':getter: Liefert die Zutatenliste eines Rezeptes'''
+        sql:str = """
+            SELECT i.igdt_name, r.igdt_amount, r.igdt_unit, i.igdt_id
+            FROM recepe_ingrediant r JOIN ingrediant i ON r.igdt_id = i.igdt_id
+            WHERE rcp_id = ?
+            ORDER BY i.igdt_name"""
+        
+        if self.id != 0:
+            try:
+                self.connect()
+                if self.con and self.c:
+                    self.c.execute(sql,(self.id,))
+                    res = self.c.fetchall()
+                    self.__ingrediants = [Ingrediant(row[0], row[1], row[2], row[3]) for row in res]
+            except Error as e: print(e)
+            finally: self.close()
+
+        return self.__ingrediants
+    
+    def __repr__(self) -> str: return f'{self.name} ({self.country.cs})' if self.country else self.name
+
+    def __eq__(self, other) -> bool:
+        if not issubclass(other, Recepe): return False
+        return self.name == other.name and self.country == other.country
