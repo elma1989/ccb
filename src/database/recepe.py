@@ -95,5 +95,27 @@ class Recepe(DataObject):
     def __repr__(self) -> str: return f'{self.name} ({self.country.cs})' if self.country else self.name
 
     def __eq__(self, other) -> bool:
-        if not issubclass(other, Recepe): return False
+        if not isinstance(other, Recepe): return False
         return self.name == other.name and self.country == other.country
+    
+    def exists(self) -> bool:
+        """
+        Prüft, ob ein Recept vorhanden ist.
+
+        :return: **True**, wenn das Rezept vorhanden ist
+        """
+        sql:str = 'SELECT rcp_id FROM recpe WHERE rcp_name = ? AND cty_cs = ?'
+        found:bool = False
+
+        if not self.country: return False
+
+        try:
+            self.connect()
+            if self.con and self.c:
+                self.c.execute(sql,(self.name, self.country.cs))
+                res = self.c.fetchone()
+                if res: found = True
+        except Error as e: print(e)
+        finally: self.close()
+
+        return found
