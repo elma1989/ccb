@@ -54,3 +54,23 @@ class Ingrediant(DataObject):
     def __eq__(self,other) -> bool:
         if not isinstance(other, Ingrediant): return False
         return self.name == other.name and self.amount[0] == other.amount[0] and self.amount[1] == other.amount[1]
+    
+    def exists(self) -> bool:
+        """
+        Prüft, ob eine Zutat bereits vohanden ist.
+
+        :return: **True**, wenn die Zutat vorhanden ist
+        """
+        sql:str = 'SELECT igdt_name FROM ingrediant WHERE igdt_name = ?'
+        found:bool = False
+
+        try:
+            self.connect()
+            if self.con and self.c:
+                self.c.execute(sql,(self.name,))
+                res = self.c.fetchone()
+                if res: found = True
+        except Error as e: print(e)
+        finally: self.close()
+
+        return found
