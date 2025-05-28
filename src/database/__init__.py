@@ -7,12 +7,14 @@ from sqlite3 import Error
 from .data import Data, DataObject
 from .country import Country
 from .ingrediant import Ingrediant
+from .recepe import Recepe
 
 def indb():
     """
     Initialisiert die Datenbank.
 
     .. important:: Alle bisherigen Daten werden dabei gelöscht.
+        Pyttests verwenden indb(). Daher sollten keine Pytests mehr durchgeführt werden sobald reale Daten existieren.
     """
     data = Data()
 

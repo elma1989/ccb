@@ -24,14 +24,16 @@ class Ingrediant(DataObject):
         return self.__name
     
     @property
-    def amount(self) -> tuple[float,str]:
+    def amount(self) -> float:
         """
         :getter: Menge
-        :return:
-             | amount[0] - Anzahl der Einheiten
-             | amount[1] - Einheit        
         """
-        return (self.__amount, self.__unit)
+        return self.__amount
+    
+    @property
+    def unit(self) -> str:
+        ''':getter: Einheit'''
+        return self.__unit
     
     @property
     def id(self) -> int:
@@ -51,11 +53,11 @@ class Ingrediant(DataObject):
         return self.__id
     
     def __repr__(self) -> str:
-        return self.name if self.amount[0] == 0.0 else f'{self.name} ({self.amount[0]} {self.amount[1]})'
+        return self.name if self.amount == 0.0 else f'{self.name} ({self.amount} {self.unit})'
     
     def __eq__(self,other) -> bool:
         if not isinstance(other, Ingrediant): return False
-        return self.name == other.name and self.amount[0] == other.amount[0] and self.amount[1] == other.amount[1]
+        return self.name == other.name and self.amount == other.amount and self.unit == other.unit
     
     def exists(self) -> bool:
         """
@@ -107,15 +109,15 @@ class Ingrediant(DataObject):
     def remove(self) -> int:
         return 1
     
-    def to_dict(self) -> dict[str,Any]:
+    def to_dict(self) -> dict:
         """
         Liefert die Daten einer Zutat:
 
         :return: Name, Menge, Einheit, ID
         """
-        outdict = {'name': self.name}
-        if self.amount[0] != 0.0:
-            outdict['amount'] = self.amount[0]
-            outdict['unit'] = self.amount[1]
+        outdict:dict[str,str|float] = {'name': self.name}
+        if self.amount != 0.0:
+            outdict['amount'] = self.amount
+            outdict['unit'] = self.unit
         if self.id != 0: outdict['id'] = self.id
         return outdict

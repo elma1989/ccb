@@ -1,4 +1,5 @@
-from database import DataObject, Error, Country, Ingrediant
+import re
+from database import DataObject, Error, Country, Ingrediant, FKON
 
 class Recepe(DataObject):
     """
@@ -9,8 +10,10 @@ class Recepe(DataObject):
     :param id: ID in der Datenbank (Standard: 0)
     :param preparation: Zubereitungsanleitung (Standard: "")
     :ivar ingrediants: Zutatenliste
+    :type ingrediants: list[Ingrediant]
     """
-    def __init__(self, name:str, country:Country, int:id=0, preparation:str=''):
+    def __init__(self, name:str, country:Country, id:int=0, preparation:str=''):
+        super().__init__()
         self.__name = name
         self.__country: Country|None = country if isinstance(country, Country) and country.exists() else None
         self.__id = id
@@ -104,7 +107,7 @@ class Recepe(DataObject):
 
         :return: **True**, wenn das Rezept vorhanden ist
         """
-        sql:str = 'SELECT rcp_id FROM recpe WHERE rcp_name = ? AND cty_cs = ?'
+        sql:str = 'SELECT rcp_id FROM recepe WHERE rcp_name = ? AND cty_cs = ?'
         found:bool = False
 
         if not self.country: return False
@@ -119,3 +122,39 @@ class Recepe(DataObject):
         finally: self.close()
 
         return found
+
+    def add(self) -> int:
+        """
+        Fügt ein neues Rezept in die Datenkbank ein.
+
+        :return:
+             | 0 - Erfolgeich
+             | 1 - Name ungültig (musss mit Großbuchstaben beginnen)
+             | 2 - Land nicht gefuden
+             | 3 - Recept bereits vorhanden
+        """
+        sql:str = 'INSERT INTO recepe VALUES(NULL,?,NULL,?)'
+        success:bool = False
+        x = re.search('^[A-Z][a-z]*', self.name)
+
+        if not x: return 1
+        if not self.country: return 2
+        if self.exists(): return 3
+
+        try:
+            self.connect()
+            if self.con and self.c:
+                self.c.execute(FKON)
+                self.c.execute(sql,(self.name, self.country.cs))
+                self.con.commit()
+                success = True
+        except Error as e: print(e)
+        finally: self.close()
+
+        return 0 if success else 1
+
+    def remove(self) -> int:
+        return 1
+
+    def to_dict(self) -> dict[str,str|int]:
+        return {}

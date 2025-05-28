@@ -89,6 +89,22 @@
 <li class="toctree-l4"><a class="reference internal" href="#database.Ingrediant.name"><code class="docutils literal notranslate"><span class="pre">Ingrediant.name</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#database.Ingrediant.remove"><code class="docutils literal notranslate"><span class="pre">Ingrediant.remove()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#database.Ingrediant.to_dict"><code class="docutils literal notranslate"><span class="pre">Ingrediant.to_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Ingrediant.unit"><code class="docutils literal notranslate"><span class="pre">Ingrediant.unit</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modul-recepe">Modul: recepe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#database.Recepe"><code class="docutils literal notranslate"><span class="pre">Recepe</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.Recepe.add"><code class="docutils literal notranslate"><span class="pre">Recepe.add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Recepe.country"><code class="docutils literal notranslate"><span class="pre">Recepe.country</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Recepe.exists"><code class="docutils literal notranslate"><span class="pre">Recepe.exists()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Recepe.id"><code class="docutils literal notranslate"><span class="pre">Recepe.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Recepe.ingrediants"><code class="docutils literal notranslate"><span class="pre">Recepe.ingrediants</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Recepe.name"><code class="docutils literal notranslate"><span class="pre">Recepe.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Recepe.preparation"><code class="docutils literal notranslate"><span class="pre">Recepe.preparation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Recepe.remove"><code class="docutils literal notranslate"><span class="pre">Recepe.remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Recepe.to_dict"><code class="docutils literal notranslate"><span class="pre">Recepe.to_dict()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -133,7 +149,8 @@
 <dd><p>Initialisiert die Datenbank.</p>
 <div class="admonition important">
 <p class="admonition-title">Wichtig</p>
-<p>Alle bisherigen Daten werden dabei gelöscht.</p>
+<p>Alle bisherigen Daten werden dabei gelöscht.
+Pyttests verwenden indb(). Daher sollten keine Pytests mehr durchgeführt werden sobald reale Daten existieren.</p>
 </div>
 </dd></dl>
 
@@ -402,17 +419,10 @@
 
 <dl class="py property">
 <dt class="sig sig-object py" id="database.Ingrediant.amount">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">amount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#database.Ingrediant.amount" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">amount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#database.Ingrediant.amount" title="Link to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Getter<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Menge</p>
-</dd>
-<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
-<dd class="field-even"><p><div class="line-block">
-<div class="line">amount[0] - Anzahl der Einheiten</div>
-<div class="line">amount[1] - Einheit        </div>
-</div>
-</p>
 </dd>
 </dl>
 </dd></dl>
@@ -476,10 +486,166 @@
 <dd><p>Liefert die Daten einer Zutat:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
 </dd>
 <dt class="field-even">Rückgabe<span class="colon">:</span></dt>
 <dd class="field-even"><p>Name, Menge, Einheit, ID</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="database.Ingrediant.unit">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#database.Ingrediant.unit" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Getter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Einheit</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="modul-recepe">
+<h2>Modul: recepe<a class="headerlink" href="#modul-recepe" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.Recepe">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.</span></span><span class="sig-name descname"><span class="pre">Recepe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preparation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.Recepe" title="Link to this definition"></a></dt>
+<dd><p>Repräsentiert ein Rezept.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Name des Rezeptes</p></li>
+<li><p><strong>country</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#database.Country" title="database.country.Country"><code class="xref py py-class docutils literal notranslate"><span class="pre">Country</span></code></a></span>) – Land, aus dem das Rezept stammt</p></li>
+<li><p><strong>id</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – ID in der Datenbank (Standard: 0)</p></li>
+<li><p><strong>preparation</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Zubereitungsanleitung (Standard: „“)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variablen<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ingrediants</strong> – Zutatenliste</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.Recepe.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Recepe.add" title="Link to this definition"></a></dt>
+<dd><p>Fügt ein neues Rezept in die Datenkbank ein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p><div class="line-block">
+<div class="line">0 - Erfolgeich</div>
+<div class="line">1 - Name ungültig (musss mit Großbuchstaben beginnen)</div>
+<div class="line">2 - Land nicht gefuden</div>
+<div class="line">3 - Recept bereits vorhanden</div>
+</div>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="database.Recepe.country">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">country</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#database.Country" title="database.country.Country"><span class="pre">Country</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#database.Recepe.country" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Getter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Urprungsland des Rezeptes</p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p>Instanz des Landes, <strong>None</strong>, wenn das Land nicht vorhanden ist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.Recepe.exists">
+<span class="sig-name descname"><span class="pre">exists</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Recepe.exists" title="Link to this definition"></a></dt>
+<dd><p>Prüft, ob ein Recept vorhanden ist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>True</strong>, wenn das Rezept vorhanden ist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="database.Recepe.id">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#database.Recepe.id" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Getter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ID des Rezeptes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="database.Recepe.ingrediants">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ingrediants</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#database.Ingrediant" title="database.ingrediant.Ingrediant"><span class="pre">Ingrediant</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#database.Recepe.ingrediants" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Getter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liefert die Zutatenliste eines Rezeptes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="database.Recepe.name">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#database.Recepe.name" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Getter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Name des Rezeptes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="database.Recepe.preparation">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preparation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#database.Recepe.preparation" title="Link to this definition"></a></dt>
+<dd><p>Verwaltet die Zubereitung.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Getter<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liefert die Zubereitungsanleitung.</p>
+</dd>
+<dt class="field-even">Setter<span class="colon">:</span></dt>
+<dd class="field-even"><p>Speichert die Zubereittungsanleitung ab.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.Recepe.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Recepe.remove" title="Link to this definition"></a></dt>
+<dd><p>Löscht ein Objekt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p><div class="line-block">
+<div class="line">0 - Erfolgreich</div>
+<div class="line">1 - Objekt nicht gefunden</div>
+<div class="line">2 - Noch referenzen vorhanden</div>
+</div>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.Recepe.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Recepe.to_dict" title="Link to this definition"></a></dt>
+<dd><p>Liefert die wichtigsten Daten eines Objektes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span></p>
+</dd>
+<dt class="field-even">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-even"><p>Wörterbuch des jeweiligen Objektes.</p>
 </dd>
 </dl>
 </dd></dl>

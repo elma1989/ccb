@@ -29,3 +29,9 @@ Modul: ingrediant
 
 .. autoclass:: database.Ingrediant
     :members:
+
+Modul: recepe
+=============
+
+.. autoclass:: database.Recepe
+    :members:
