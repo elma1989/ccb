@@ -27,3 +27,27 @@ class RecepeBook(Data):
         finally: self.close()
 
         return recepe
+    
+    def find(self, name:str, country: Country):
+        """
+        Sucht ein Rezept mit dem Namen und dem Land.
+
+        :param name: Name des Rezeptes
+        :param country: Ursprungsland des Rezeptes
+        :return: Instanz des gefunden Rezeptes, **None**, wenn kein passendes Rezept gefunden wurde
+        """
+        sql:str = 'SELECT rcp_id, rcp_preparation FROM recepe WHERE rcp_name = ? AND cty_cs = ?'
+        recepe:Recepe|None = None
+
+        if not isinstance(country, Country) or not country.exists(): return None
+
+        try:
+            self.connect()
+            if self.con and self.c:
+                self.c.execute(sql,(name, country.cs))
+                res = self.c.fetchone()
+                if res: recepe = Recepe(name, country, res[0], res[1]) if res[1] else Recepe(name, country, res[0])
+        except Error as e: print(e)
+        finally: self.close()
+        
+        return recepe

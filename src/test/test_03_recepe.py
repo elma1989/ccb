@@ -42,3 +42,10 @@ def test_recepe_to_dict():
 
     assert pierogies.to_dict() == pierogies_dict
     assert sausage.to_dict() == sausage_dict
+
+def test_recepe_book_find():
+    book = RecepeBook()
+
+    assert book.find('Piroggen',Country('pl')) == book.get_recepe(1)
+    assert book.find('Krakauer Würstchen',Country('pl')) == book.get_recepe(2)
+    assert not book.find('Bratkartoffeln', Country('d'))
