@@ -8,6 +8,7 @@ from .data import Data, DataObject
 from .country import Country
 from .ingrediant import Ingrediant
 from .recepe import Recepe
+from .recepe_book import RecepeBook
 
 def indb():
     """
