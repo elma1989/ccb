@@ -1,4 +1,5 @@
 import re
+from typing import Any
 from database import DataObject, Error, Country, Ingrediant, FKON
 
 class Recepe(DataObject):
@@ -195,3 +196,16 @@ class Recepe(DataObject):
         finally: self.close()
 
         return 0 if success else 2
+    
+    def view(self) -> dict[str,Any]:
+        """
+        Liefert die gesamten Daten.
+
+        :return: Wörterbuch mit allen Daten des Rezeptes
+        """
+        outdict:dict[str,Any] = self.to_dict()
+        if self.country: outdict['country'] = self.country.cs
+        if len(self.ingrediants) > 0: outdict['ingrediants'] = [ingrediant.to_dict() for ingrediant in self.ingrediants]
+        if len(self.preparation) > 0: outdict['preparation'] = self.preparation
+
+        return outdict

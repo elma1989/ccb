@@ -76,3 +76,24 @@ def test_recepe_add_ingrediant():
     assert pierogies.ingrediants == [flower]
     assert pierogies.add_ingrediant(sugar) == 0
     assert pierogies.ingrediants == [flower, sugar]
+
+def test_recepe_preparation():
+    book = RecepeBook()
+    pierogies = book.get_recepe(1)
+    pierogies.preparation = 'Nudeln kochen'
+    assert pierogies.preparation == 'Nudeln kochen'
+
+def test_recepe_view():
+    book = RecepeBook()
+    pierogies = book.get_recepe(1)
+    flower = Ingrediant('Mehl', 200.0, 'g')
+    sugar = Ingrediant('Zucker', 100.0, 'g')
+    data = {
+        'id':1,
+        'name':'Piroggen',
+        'country':'PL',
+        'ingrediants': [flower.to_dict(), sugar.to_dict()],
+        'preparation': 'Nudeln kochen'
+    }
+
+    assert pierogies.view() == data
