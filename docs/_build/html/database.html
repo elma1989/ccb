@@ -97,6 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#modul-recepe">Modul: recepe</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#database.Recepe"><code class="docutils literal notranslate"><span class="pre">Recepe</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#database.Recepe.add"><code class="docutils literal notranslate"><span class="pre">Recepe.add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.Recepe.add_ingrediant"><code class="docutils literal notranslate"><span class="pre">Recepe.add_ingrediant()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#database.Recepe.country"><code class="docutils literal notranslate"><span class="pre">Recepe.country</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#database.Recepe.exists"><code class="docutils literal notranslate"><span class="pre">Recepe.exists()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#database.Recepe.id"><code class="docutils literal notranslate"><span class="pre">Recepe.id</span></code></a></li>
@@ -549,6 +550,29 @@ Pyttests verwenden indb(). Daher sollten keine Pytests mehr durchgeführt werden
 <div class="line">1 - Name ungültig (musss mit Großbuchstaben beginnen)</div>
 <div class="line">2 - Land nicht gefuden</div>
 <div class="line">3 - Recept bereits vorhanden</div>
+</div>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.Recepe.add_ingrediant">
+<span class="sig-name descname"><span class="pre">add_ingrediant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ingrediant</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.Recepe.add_ingrediant" title="Link to this definition"></a></dt>
+<dd><p>Fügt zu einem Rezeit eine Zutat hinzu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ingrediant</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#database.Ingrediant" title="database.ingrediant.Ingrediant"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ingrediant</span></code></a></span>) – zu hinzufügende Zutat</p>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+<dt class="field-odd">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-odd"><p><div class="line-block">
+<div class="line">0 - Zutat hinzugfügt</div>
+<div class="line">1 - Zutat oder Rezept nicht gefunden</div>
+<div class="line">2 - Menge fehlt</div>
+<div class="line">3 - Zutat ist bereits im Rezept</div>
 </div>
 </p>
 </dd>

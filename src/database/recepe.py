@@ -165,3 +165,33 @@ class Recepe(DataObject):
         outdict:dict[str,str|int] = {'name':self.name}
         if self.id != 0: outdict['id'] = self.id
         return outdict
+
+    def add_ingrediant(self, ingrediant:Ingrediant) -> int:
+        """
+        Fügt zu einem Rezeit eine Zutat hinzu.
+
+        :param ingrediant: zu hinzufügende Zutat
+        :return:
+             | 0 - Zutat hinzugfügt
+             | 1 - Zutat oder Rezept nicht gefunden
+             | 2 - Menge fehlt
+             | 3 - Zutat ist bereits im Rezept
+        """
+        sql:str = 'INSERT INTO recepe_ingrediant VALUES(?,?,?,?)'
+        success:bool = False
+
+        if not isinstance(ingrediant, Ingrediant) or not ingrediant.exists() or self.id == 0: return 1
+        if ingrediant.amount == 0.0 or len(ingrediant.unit) == 0: return 2
+        if ingrediant in self.ingrediants: return 3
+
+        try:
+            self.connect()
+            if self.con and self.c:
+                self.c.execute(FKON)
+                self.c.execute(sql,(self.id, ingrediant.id, ingrediant.amount, ingrediant.unit))
+                self.con.commit()
+                success = True
+        except Error as e: print(e)
+        finally: self.close()
+
+        return 0 if success else 2

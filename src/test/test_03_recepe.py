@@ -56,3 +56,23 @@ def test_recepe_book_recepies():
     sausage = book.get_recepe(2)
 
     assert book.recepies(Country('pl')) == [sausage, pierogies]
+
+def test_recepe_add_ingrediant():
+    book = RecepeBook()
+    potatos = Recepe('Bratkartoffeln', Country('d'))
+    pierogies = book.get_recepe(1)
+    fail_flower = Ingrediant('Mehl')
+    egg = Ingrediant('Eier',2.0,'St')
+    flower = Ingrediant('Mehl', 200.0, 'g')
+    sugar = Ingrediant('Zucker', 100.0, 'g')
+
+    assert potatos.add_ingrediant(flower) == 1
+    assert pierogies.add_ingrediant(egg) == 1
+    assert pierogies.add_ingrediant(fail_flower) == 2
+
+    assert pierogies.ingrediants == []
+    assert pierogies.add_ingrediant(flower) == 0
+    assert pierogies.add_ingrediant(flower) == 3
+    assert pierogies.ingrediants == [flower]
+    assert pierogies.add_ingrediant(sugar) == 0
+    assert pierogies.ingrediants == [flower, sugar]
