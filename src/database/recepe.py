@@ -155,7 +155,29 @@ class Recepe(DataObject):
         return 0 if success else 1
 
     def remove(self) -> int:
-        return 1
+        """
+        Löscht ein Rezept.
+
+        :return:
+             | 0 - Erfolgreich
+             | 1 - Rezept nicht gefunden
+        """
+        sql:str = 'DELETE FROM recepe WHERE rcp_id = ?'
+        success:bool = False
+
+        if not self.exists(): return 1
+
+        try:
+            self.connect()
+            if self.con and self.c:
+                self.c.execute(FKON)
+                self.c.execute(sql,(self.id,))
+                self.con.commit()
+                success = True
+        except Error as e: print(e)
+        finally: self.close()
+
+        return 0 if success else 1
 
     def to_dict(self) -> dict[str,str|int]:
         """
