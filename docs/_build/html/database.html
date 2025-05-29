@@ -109,6 +109,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#modul-recepe-book">Modul: recepe_book</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#database.RecepeBook"><code class="docutils literal notranslate"><span class="pre">RecepeBook</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.RecepeBook.find"><code class="docutils literal notranslate"><span class="pre">RecepeBook.find()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.RecepeBook.get_recepe"><code class="docutils literal notranslate"><span class="pre">RecepeBook.get_recepe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database.RecepeBook.recepies"><code class="docutils literal notranslate"><span class="pre">RecepeBook.recepies()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -639,13 +648,76 @@ Pyttests verwenden indb(). Daher sollten keine Pytests mehr durchgeführt werden
 <dl class="py method">
 <dt class="sig sig-object py" id="database.Recepe.to_dict">
 <span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.Recepe.to_dict" title="Link to this definition"></a></dt>
-<dd><p>Liefert die wichtigsten Daten eines Objektes.</p>
+<dd><p>Liefert die Grunddaten eines Receptes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span></p>
 </dd>
 <dt class="field-even">Rückgabe<span class="colon">:</span></dt>
-<dd class="field-even"><p>Wörterbuch des jeweiligen Objektes.</p>
+<dd class="field-even"><p>ID des Rezeptes, Name des Rezeptes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="modul-recepe-book">
+<h2>Modul: recepe_book<a class="headerlink" href="#modul-recepe-book" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.RecepeBook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.</span></span><span class="sig-name descname"><span class="pre">RecepeBook</span></span><a class="headerlink" href="#database.RecepeBook" title="Link to this definition"></a></dt>
+<dd><p>Repräsentiert das Rezeptbuch, welches mehrere Rezepte verwaltet.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.RecepeBook.find">
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.RecepeBook.find" title="Link to this definition"></a></dt>
+<dd><p>Sucht ein Rezept mit dem Namen und dem Land.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Name des Rezeptes</p></li>
+<li><p><strong>country</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#database.Country" title="database.country.Country"><code class="xref py py-class docutils literal notranslate"><span class="pre">Country</span></code></a></span>) – Ursprungsland des Rezeptes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#database.Recepe" title="database.recepe.Recepe"><code class="xref py py-class docutils literal notranslate"><span class="pre">Recepe</span></code></a> | <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+<dt class="field-odd">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Instanz des gefunden Rezeptes, <strong>None</strong>, wenn kein passendes Rezept gefunden wurde</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.RecepeBook.get_recepe">
+<span class="sig-name descname"><span class="pre">get_recepe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.RecepeBook.get_recepe" title="Link to this definition"></a></dt>
+<dd><p>Liefert ein Rezept aus einer id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – ID des Rezeptes</p>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#database.Recepe" title="database.recepe.Recepe"><code class="xref py py-class docutils literal notranslate"><span class="pre">Recepe</span></code></a> | <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+<dt class="field-odd">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Instanz des Rezeptes, <strong>None</strong>, wenn kein Rezept gefunden wurde</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.RecepeBook.recepies">
+<span class="sig-name descname"><span class="pre">recepies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">country</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.RecepeBook.recepies" title="Link to this definition"></a></dt>
+<dd><p>Sucht alle Rezepte aus einem Land.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>country</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#database.Country" title="database.country.Country"><code class="xref py py-class docutils literal notranslate"><span class="pre">Country</span></code></a></span>) – Land aus dem die Rezepte stammen</p>
+</dd>
+<dt class="field-even">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="#database.Recepe" title="database.recepe.Recepe"><code class="xref py py-class docutils literal notranslate"><span class="pre">Recepe</span></code></a>]</span></p>
+</dd>
+<dt class="field-odd">Rückgabe<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Rezepteliste aus dem jeweiligen Land</p>
 </dd>
 </dl>
 </dd></dl>

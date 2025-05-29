@@ -2,12 +2,12 @@ from database import Data, Recepe, Country, Error
 
 class RecepeBook(Data):
     """
-    Repräsentiert das Rezeptbuch, welches mehrere Rezepte veraltet.
+    Repräsentiert das Rezeptbuch, welches mehrere Rezepte verwaltet.
     """
     def __init__(self):
         super().__init__()
 
-    def get_recepe(self, id:int):
+    def get_recepe(self, id:int) -> Recepe|None:
         """
         Liefert ein Rezept aus einer id.
 
@@ -28,7 +28,7 @@ class RecepeBook(Data):
 
         return recepe
     
-    def find(self, name:str, country: Country):
+    def find(self, name:str, country: Country) -> Recepe|None:
         """
         Sucht ein Rezept mit dem Namen und dem Land.
 
@@ -51,3 +51,26 @@ class RecepeBook(Data):
         finally: self.close()
         
         return recepe
+
+    def recepies(self, country:Country) -> list[Recepe]:
+        """
+        Sucht alle Rezepte aus einem Land.
+
+        :param country: Land aus dem die Rezepte stammen
+        :return: Rezepteliste aus dem jeweiligen Land
+        """
+        sql:str = 'SELECT rcp_name, rcp_id FROM recepe WHERE cty_cs = ? ORDER BY rcp_name'
+        recepies = []
+
+        if not isinstance(country, Country) or not country.exists(): return []
+
+        try:
+            self.connect()
+            if self.con and self.c:
+                self.c.execute(sql,(country.cs,))
+                res = self.c.fetchall()
+                recepies = [Recepe(row[0], country, row[1]) for row in res]
+        except Error as e: print(e)
+        finally: self.close()
+
+        return recepies

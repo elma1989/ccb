@@ -49,3 +49,10 @@ def test_recepe_book_find():
     assert book.find('Piroggen',Country('pl')) == book.get_recepe(1)
     assert book.find('Krakauer Würstchen',Country('pl')) == book.get_recepe(2)
     assert not book.find('Bratkartoffeln', Country('d'))
+
+def test_recepe_book_recepies():
+    book = RecepeBook()
+    pierogies = book.get_recepe(1)
+    sausage = book.get_recepe(2)
+
+    assert book.recepies(Country('pl')) == [sausage, pierogies]

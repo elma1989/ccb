@@ -35,3 +35,9 @@ Modul: recepe
 
 .. autoclass:: database.Recepe
     :members:
+
+Modul: recepe_book
+==================
+
+.. autoclass:: database.RecepeBook
+    :members:
