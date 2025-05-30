@@ -7,6 +7,23 @@ class RecepeBook(Data):
     def __init__(self):
         super().__init__()
 
+    def countries(self) -> list[Country]:
+        """
+        Liefert eine Liste mit allen verfügbaren Ländern.
+        """
+        sql:str = 'SELECT cty_cs, cty_name FROM country ORDER BY cty_name'
+        countries = []
+
+        try:
+            self.connect()
+            if self.con and self.c:
+                self.c.execute(sql)
+                res = self.c.fetchall()
+                countries = [Country(row[0], row[1]) for row in res]
+        except Error as e: print(e)
+        
+        return countries
+
     def get_recepe(self, id:int) -> Recepe|None:
         """
         Liefert ein Rezept aus einer id.

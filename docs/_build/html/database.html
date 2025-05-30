@@ -21,6 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
     <link rel="search" title="Suche" href="search.html" />
+    <link rel="next" title="Pakete: route" href="route.html" />
     <link rel="prev" title="Datenbankmodell" href="database_model.html" /> 
 </head>
 
@@ -113,6 +114,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#modul-recepe-book">Modul: recepe_book</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#database.RecepeBook"><code class="docutils literal notranslate"><span class="pre">RecepeBook</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.RecepeBook.countries"><code class="docutils literal notranslate"><span class="pre">RecepeBook.countries()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#database.RecepeBook.find"><code class="docutils literal notranslate"><span class="pre">RecepeBook.find()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#database.RecepeBook.get_recepe"><code class="docutils literal notranslate"><span class="pre">RecepeBook.get_recepe()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#database.RecepeBook.recepies"><code class="docutils literal notranslate"><span class="pre">RecepeBook.recepies()</span></code></a></li>
@@ -122,6 +124,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="route.html">Pakete: route</a></li>
 </ul>
 
         </div>
@@ -715,6 +718,17 @@ Betroffene Rezepte müssen zuvor einzeln gelöscht werden.</p>
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.</span></span><span class="sig-name descname"><span class="pre">RecepeBook</span></span><a class="headerlink" href="#database.RecepeBook" title="Link to this definition"></a></dt>
 <dd><p>Repräsentiert das Rezeptbuch, welches mehrere Rezepte verwaltet.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="database.RecepeBook.countries">
+<span class="sig-name descname"><span class="pre">countries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.RecepeBook.countries" title="Link to this definition"></a></dt>
+<dd><p>Liefert eine Liste mit allen verfügbaren Ländern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Rückgabetyp<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="#database.Country" title="database.country.Country"><code class="xref py py-class docutils literal notranslate"><span class="pre">Country</span></code></a>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="database.RecepeBook.find">
 <span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.RecepeBook.find" title="Link to this definition"></a></dt>
 <dd><p>Sucht ein Rezept mit dem Namen und dem Land.</p>
@@ -778,6 +792,7 @@ Betroffene Rezepte müssen zuvor einzeln gelöscht werden.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="database_model.html" class="btn btn-neutral float-left" title="Datenbankmodell" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
+        <a href="route.html" class="btn btn-neutral float-right" title="Pakete: route" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
