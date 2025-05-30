@@ -73,7 +73,7 @@ class DataObject(Data, ABC):
         :return:
              | 0 - Erfolgreich
              | 1 - Objekt nicht gefunden
-             | 2 - Noch referenzen vorhanden
+             | 2 - Noch Referenzen vorhanden
         """
         pass
 

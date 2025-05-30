@@ -9,3 +9,12 @@ def test_remove_recepe():
     assert fail.remove() == 1
     assert pierogies.remove() == 0
     assert book.recepies(Country('pl')) == [sausage]
+
+def test_remove_country():
+    book = RecepeBook()
+    d = Country('d')
+    pl = Country('pl')
+    
+    assert d.remove() == 1
+    assert pl.remove() == 0
+    assert book.recepies('pl') == []
