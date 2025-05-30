@@ -86,10 +86,33 @@
 <span class="sig-name descname"><span class="pre">GET</span> </span><span class="sig-name descname"><span class="pre">/</span></span><a class="headerlink" href="#get--" title="Link to this definition"></a></dt>
 <dd><p>Rendert die Hauptseite.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Status Codes<span class="colon">:</span></dt>
+<dt class="field-odd">Response Headers<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><span><a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7231#section-3.1.1.5">Content-Type</a></span> – text/html; charset=utf8</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
 <li><p><span><a class="reference external" href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a></span> – Hauptseite wurde erfolgreich geladen</p></li>
 <li><p><span><a class="reference external" href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5">404 Not Found</a></span> – index.html wurde nicht gefunden</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="http get">
+<dt class="sig sig-object http" id="get--countries">
+<span class="sig-name descname"><span class="pre">GET</span> </span><span class="sig-name descname"><span class="pre">/countries</span></span><a class="headerlink" href="#get--countries" title="Link to this definition"></a></dt>
+<dd><p>Liefert einee Liste mit allen verfügbaren Läandern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Response Headers<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><span><a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7231#section-3.1.1.5">Content-Type</a></span> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Status Codes<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><span><a class="reference external" href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1">200 OK</a></span> – Liste wurde erfolgreich geladen</p></li>
 </ul>
 </dd>
 </dl>
