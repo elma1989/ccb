@@ -1,4 +1,9 @@
-from database import RecepeBook, Recepe, Ingrediant, Country
+from database import RecepeBook, Recepe, Ingrediant, Country, indb
+
+def test_remove_active_ingrediant():
+    sugar = Ingrediant('Zucker')
+
+    assert sugar.remove() == 2
 
 def test_remove_recepe():
     book = RecepeBook()
@@ -18,3 +23,12 @@ def test_remove_country():
     assert d.remove() == 1
     assert pl.remove() == 0
     assert book.recepies('pl') == []
+
+def test_remove_ingrediant():
+    eggs = Ingrediant('Eier')
+    sugar = Ingrediant('Zucker')
+
+    assert eggs.remove() == 1
+    assert sugar.remove() == 0
+
+    indb()

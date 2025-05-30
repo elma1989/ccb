@@ -1,5 +1,5 @@
 from typing import Any
-from database import DataObject, Error
+from database import DataObject, Error, FKON
 import re
 
 class Ingrediant(DataObject):
@@ -107,7 +107,33 @@ class Ingrediant(DataObject):
         return 0 if success else 1
 
     def remove(self) -> int:
-        return 1
+        """
+        Löscht einen Zutat.
+
+        :return:
+             | 0 - Erfolgreich
+             | 1 - Zutat nicht gefunden
+             | 2 - Zutat wird noch in mindestens einem Rezept verwendet
+
+        .. important:: Eine Zutat kann nur gelöscht werden, wenn sie von keinen Rezept verwendet wird.
+            Betroffene Rezepte müssen zuvor einzeln gelöscht werden.
+        """
+        sql:str = 'DELETE FROM ingrediant WHERE igdt_name = ?'
+        success:bool = False
+
+        if not self.exists(): return 1
+
+        try:
+            self.connect()
+            if self.con and self.c:
+                self.c.execute(FKON)
+                self.c.execute(sql,(self.name,))
+                self.con.commit()
+                success = True
+        except Error as e: print(e)
+        finally: self.close()
+
+        return 0 if success else 2
     
     def to_dict(self) -> dict:
         """
