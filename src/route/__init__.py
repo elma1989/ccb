@@ -1,0 +1,1 @@
+from .recepe import recepe_bp as recepe
