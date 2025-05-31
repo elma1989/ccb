@@ -23,7 +23,7 @@ def test_remove_country():
     
     assert d.remove() == 1
     assert pl.remove() == 0
-    assert book.recepies('pl') == []
+    assert book.recepies('pl') == None
     assert book.countries() == [ua]
 
 def test_remove_ingrediant():

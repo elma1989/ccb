@@ -56,6 +56,7 @@ def test_recepe_book_recepies():
     sausage = book.get_recepe(2)
 
     assert book.recepies(Country('pl')) == [sausage, pierogies]
+    assert not book.recepies(Country('d'))
 
 def test_recepe_add_ingrediant():
     book = RecepeBook()

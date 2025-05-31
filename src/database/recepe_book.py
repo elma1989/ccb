@@ -69,17 +69,17 @@ class RecepeBook(Data):
         
         return recepe
 
-    def recepies(self, country:Country) -> list[Recepe]:
+    def recepies(self, country:Country) -> list[Recepe]|None:
         """
         Sucht alle Rezepte aus einem Land.
 
         :param country: Land aus dem die Rezepte stammen
-        :return: Rezepteliste aus dem jeweiligen Land
+        :return: Rezepteliste aus dem jeweiligen Land, **None**, wenn das Land nicht vorhanden ist
         """
         sql:str = 'SELECT rcp_name, rcp_id FROM recepe WHERE cty_cs = ? ORDER BY rcp_name'
         recepies = []
 
-        if not isinstance(country, Country) or not country.exists(): return []
+        if not isinstance(country, Country) or not country.exists():return None
 
         try:
             self.connect()
