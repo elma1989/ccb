@@ -61,3 +61,28 @@ def test_recepies(url):
     assert fail_country.status_code == 404
     assert pl_country.status_code == 200
     assert pl_country.json() == pl_data
+
+def test_recepe_details(url):
+    pierogies_data = {
+        'id':1,
+        'name':'Piroggen',
+        'country':'PL',
+        'ingrediants': [{
+            'id':2,
+            'name':'Mehl',
+            'amount':200.0,
+            'unit':'g'
+        },{
+            'id':1,
+            'name':'Zucker',
+            'amount':500.0,
+            'unit':'g'
+        }],
+        'preparation':'Nudeln kochen'
+    }
+    fail_recepe = req.get(url + 'recepies/3')
+    pierogies = req.get(url + 'recepies/1')
+
+    assert fail_recepe.status_code == 404
+    assert pierogies.status_code == 200
+    assert pierogies.json() == pierogies_data

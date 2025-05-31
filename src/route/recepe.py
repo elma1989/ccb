@@ -25,3 +25,11 @@ def recepies():
     if not recepies: return {'message':'Country not found'}, 404
 
     return [recepe.to_dict() for recepe in recepies]
+
+@recepe_bp.route('/recepies/<int:recepe_id>')
+def recepe(recepe_id):
+    book = RecepeBook()
+    recepe = book.get_recepe(recepe_id)
+    
+    if not recepe: return{'message':'Recepe not found'}, 404
+    return recepe.view()

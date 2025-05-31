@@ -28,3 +28,12 @@ Modul: recepe
     :statuscode 200: Rezepte wurden erfolgreich geladen
     :statuscode 400: Angabe des Landes fehlt
     :statuscode 404: Land nicht gefunden
+
+.. http:get:: /recepies/(int:recepe_id)
+
+    Liefet eine detailierte Informationen zu einem Rezept.
+
+    :param int recepe_id: Id des Rezeptes
+    :resheader Content-Type: application/json
+    :statuscode 200: Rezept-Daten wurden erfolgreich geladen
+    :statuscode 404: Rezept wurde nicht gefunden
