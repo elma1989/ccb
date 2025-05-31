@@ -14,7 +14,17 @@ Modul: recepe
 
 .. http:get:: /countries
 
-    Liefert einee Liste mit allen verfügbaren Läandern.
+    Liefert einee Liste mit allen verfügbaren Ländern.
 
     :resheader Content-Type: application/json
     :statuscode 200: Liste wurde erfolgreich geladen
+
+.. http:get:: /recepies
+
+    Liefert eine Liste mit Rezepten aus einem Land
+
+    :query string country: Kfz-Kennzeichen des zu suchenden Landes in der Datenbank
+    :resheader Content-Type: application/json
+    :statuscode 200: Rezepte wurden erfolgreich geladen
+    :statuscode 400: Angabe des Landes fehlt
+    :statuscode 404: Land nicht gefunden
