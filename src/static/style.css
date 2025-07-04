@@ -10,3 +10,12 @@
 body {
     background: orange;
 }
+
+.source {
+    font-style: italic;
+}
+
+.source::before {
+    content: 'Quelle: ';
+    font-weight: bold;
+}
